@@ -8,7 +8,7 @@
 
 import tkinter as tk
 from random import sample
-Colors=[« green2 », « cyan »]
+Colors=["green2 ", "cyan"]
 def generateur_case(p, n):
 	units=[(line, col) for col in range(n) for line in range(n)]
 	ntrees=int(n**2*p)
@@ -27,7 +27,7 @@ def fill_cell(states, line, col):
         B=(unit*(col+1), unit*(line+1))
         state=states[line][col]
         color=Colors[state]
-        canvas.create_rectangle(A, B, fill=color, outline=‘black')
+        canvas.create_rectangle(A, B, fill=color, outline='black')
 
 HEIGHT=10
 WIDTH=10
@@ -36,12 +36,12 @@ p=0.5
 n=4
 unit=10
 root= tk.Tk()
-root.title(‘Terrain de jeu’)
+root.title('Terrain de jeu')
 canvas= tk.Canvas(root, height=HEIGHT, width=WIDTH, bg='white')
 canvas.grid(row = 0, column = 0, columnspan=2, padx=3, pady=3)
 for i in range(50):
             for j in range(50):
-                  tk.Canvas(root, height = HEIGHT, width = WIDTH, highlightbackground = ‘black’).grid(row = i, column = j)
+                  tk.Canvas(root, height = HEIGHT, width = WIDTH, highlightbackground = 'black').grid(row = i, column = j)
 states = generateur_case(p, n)
 i=n//2
 j=0
