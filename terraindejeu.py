@@ -28,23 +28,41 @@ def fill_cell(states, line, col):
         state=states[line][col]
         color=Colors[state]
         canvas.create_rectangle(A, B, fill=color, outline='black')
+	
+###Import des librairies###
+import tkinter as tk
+import random as rd
 
+###Constantes###
 HEIGHT=10
 WIDTH=10
-cases = []
 p=0.5
-n=4
-unit=10
+n=4	
+
+### Fonctions ###
+def coul_quad():
+    "Creation des cellules d'eau ou de terre"  
+    for i in range(50):
+        for j in range(50):
+            r = rd.choice([0, p])
+            if r == p:
+                case=tk.Canvas(root, height = HEIGHT, width = WIDTH, bg="blue").grid(row = i, column = j)
+                
+            else :
+                case=tk.Canvas(root, height = HEIGHT, width = WIDTH, bg="brown").grid(row = i, column = j)
+
+		
+### Programme principal ###
 root= tk.Tk()
 root.title('Terrain de jeu')
-canvas= tk.Canvas(root, height=HEIGHT, width=WIDTH, bg='white')
+canvas= tk.Canvas(root, height=HEIGHT, width=WIDTH, bg="blue")
 canvas.grid(row = 0, column = 0, columnspan=2, padx=3, pady=3)
-for i in range(50):
-            for j in range(50):
-                  tk.Canvas(root, height = HEIGHT, width = WIDTH, highlightbackground = 'black').grid(row = i, column = j)
-states = generateur_case(p, n)
-i=n//2
-j=0
-states[i][j]=2
-fill(states)
+
+
+### Appel des fonctions ###
+coul_quad()
+creer_tableau()
+
+
+### Lancement de la boucle ###
 root.mainloop()
