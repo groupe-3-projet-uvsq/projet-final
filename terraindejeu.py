@@ -11,10 +11,10 @@ from random import sample
 import random as rd
 def generateur_case(p, n):
 	units=[(line, col) for col in range(n) for line in range(n)]
-	ntrees=int(n**2*p)
-	trees=sample(units, ntrees)
+	trees=int(n**2*p)
+	soil=sample(units, trees)
 	states=[[0]*n for _ in range(n)]
-	for (i, j) in trees:
+	for (i, j) in soil:
 	    states[i][j]=1
 	return states
 
