@@ -42,8 +42,5 @@ for i in range(50):
             for j in range(50):
                   tk.Canvas(root, height = HEIGHT, width = WIDTH, highlightbackground = 'black').grid(row = i, column = j)
 states = generateur_case(p, n)
-i=n//2
-j=0
-states[i][j]=2
 coul_quad()
 root.mainloop()
