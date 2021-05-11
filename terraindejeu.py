@@ -5,10 +5,15 @@
 #madjoua Djeti
 #Fouad Abdoullah
 #Sihem MADMAR
+#################
 
+#import des librairies
 import tkinter as tk
 from random import sample
 import random as rd
+
+#####################
+
 def generateur_case(p, n):
 	units=[(line, col) for col in range(n) for line in range(n)]
 	trees=int(n**2*p)
@@ -34,7 +39,11 @@ p=0.5
 n=4
 unit=10
 import random
+
+###################
+
 ###Constantes###
+
 HEIGHT=50
 WIDTH=50
 nb_voisins= random.randint(0, 8)
@@ -44,18 +53,23 @@ T= 5
 couleur=["green","blue"]
 eau= 1
 terre= 0
+
 # Matrices #
+
 #Mémorise les cellules#
 cell = [[0 for row in range(HEIGHT)] for col in range(WIDTH)] 
 #Mémorise l'état initial des cellules#
 etat = [[terre for row in range(HEIGHT)] for col in range(WIDTH)]
 # Mémorise le nouvel état des cellules#
 temp = [[terre for row in range(HEIGHT)] for col in range(WIDTH)]
-# Fonctions du programme #
+
+########### 
+
+# Fonctions du programme 
 
 def quad():
      """ Quadrille le terrain et place des cellules de terre en fonction de p"""
-     # placer au hasard environ 50% de cellules de terre###
+     # placer au hasard environ 50% de cellules de terre
      for i in range(HEIGHT):
          for j in range(WIDTH):
              r=random.randrange(0, 10, 1)
@@ -137,7 +151,31 @@ def tableau():
      calculer()
      dessiner()
      root.after(500, tableau)
+	
+###############
+#déplacement du perso
 
+for event in tk.EventType.get():
+
+    if event.type == KeyboardInterrupt:
+
+      if event.key === <Up>:
+          x perso += 1
+      if event.key === <Down>:
+          x perso -= 1
+      if event.key === <Left>:
+          y perso -= 1
+      if event.key === <Right>:
+          y perso += 1
+    
+perso()
+canvas.bind("KP_UP", perso)
+canvas.bind("KP_Down", perso)
+canvas.bind("KP_Left", perso)
+canvas.bind("KP_Right", perso)
+
+
+######################
 
 root= tk.Tk()
 root.title('Terrain de jeu')
