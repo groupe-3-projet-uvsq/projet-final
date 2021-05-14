@@ -98,14 +98,12 @@ def case_eau(a,b):
 
      return nb_voisins
 
-def perso():
-     x= random.randint(0, WIDTH)
-     y= random.randint(0, HEIGHT)
-     canvas.itemconfig(cell[x][y], fill="black")
 
 def calculer():
      """ Création des cases d'eau et de terre en fonction du voisinage"""
-     global nb_voisins
+     a=random.randint(0, HEIGHT)
+     b=random.randint(0, WIDTH)
+     nb_voisins= case_eau(a, b)
      n= 0
      while n != 4:
          for y in range(HEIGHT):
@@ -129,12 +127,18 @@ def calculer():
                      for x in range(WIDTH):
                          etat[x][y] = temp[x][y]
          n = n+1
+	
+def perso():
+     x= random.randint(0, WIDTH)
+     y= random.randint(0, HEIGHT)
+     cell[x][y] = canvas.create_rectangle((x*cote, y*cote, (x+1)*cote, (y+1)*cote), outline="gray", fill="black")
 
 def tableau():
      """ Calcul et dessin du prochain tableau """
      calculer()
      dessiner()
-     root.after(500, tableau)
+     perso()
+     root.after(100, tableau)
 	
 for event in tk.EventType.get():
 
@@ -162,7 +166,6 @@ states = generateur_case(p, n)
 coul_quad()
 quad()
 tableau()
-perso()
 canvas.bind("KP_UP", perso)
 canvas.bind("KP_Down", perso)
 canvas.bind("KP_Left", perso)
