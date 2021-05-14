@@ -27,16 +27,14 @@ def coul_quad():
 			else :
 				case=tk.Canvas(root, height = HEIGHT, width = WIDTH, bg="brown").grid(row = i, column = j)
 
-HEIGHT=10
-WIDTH=10
+HEIGHT=50
+WIDTH=50
 cases = []
 p=0.5
 n=4
 unit=10
 import random
 ###Constantes###
-HEIGHT=50
-WIDTH=50
 nb_voisins= random.randint(0, 8)
 cote= 10
 p= 0.5
