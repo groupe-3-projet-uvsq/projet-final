@@ -156,8 +156,7 @@ for event in tk.EventType.get():
 
 root= tk.Tk()
 root.title('Terrain de jeu')
-canvas= tk.Canvas(root, height=HEIGHT, width=WIDTH, bg='white')
-canvas= tk.Canvas(root, height=HEIGHT, width=WIDTH, bg='blue')
+canvas= tk.Canvas(root, height=HEIGHT*cote, width=WIDTH*cote, bg='white')
 canvas.grid(row = 0, column = 0, columnspan=2, padx=3, pady=3)
 for i in range(50):
             for j in range(50):
