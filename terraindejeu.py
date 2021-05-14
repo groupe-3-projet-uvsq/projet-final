@@ -41,7 +41,7 @@ nb_voisins= random.randint(0, 8)
 cote= 10
 p= 0.5
 T= 5
-couleur=["green","blue"]
+couleur=["brown","blue"]
 eau= 1
 terre= 0
 # Matrices #
@@ -76,7 +76,7 @@ def dessiner():
              if etat[x][y]==1:
                  coul = "blue"
              else:
-                 coul = "green"
+                 coul = "brown"
              canvas.itemconfig(cell[x][y], fill=coul)
 
 def case_eau(a,b):
