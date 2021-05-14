@@ -137,6 +137,19 @@ def tableau():
      calculer()
      dessiner()
      root.after(500, tableau)
+	
+for event in tk.EventType.get():
+
+     if event.type == KeyboardInterrupt:
+
+       if event.key === <Up>:
+           x perso += 1
+       if event.key === <Down>:
+           x perso -= 1
+       if event.key === <Left>:
+           y perso -= 1
+       if event.key === <Right>:
+           y perso += 1
 
 
 root= tk.Tk()
