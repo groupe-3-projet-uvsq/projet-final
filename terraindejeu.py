@@ -6,26 +6,6 @@
 #Fouad Abdoullah
 #Sihem MADMAR
 
-import tkinter as tk
-from random import sample
-import random as rd
-def generateur_case(p, n):
-	units=[(line, col) for col in range(n) for line in range(n)]
-	trees=int(n**2*p)
-	soil=sample(units, trees)
-	states=[[0]*n for _ in range(n)]
-	for (i, j) in soil:
-	    states[i][j]=1
-	return states
-
-def coul_quad():
-	for i in range(50):
-		for j in range(50):
-			r = rd.choice([0, p])
-			if r == p:
-				case=tk.Canvas(root, height = HEIGHT, width = WIDTH, bg="blue").grid(row = i, column = j)
-			else :
-				case=tk.Canvas(root, height = HEIGHT, width = WIDTH, bg="brown").grid(row = i, column = j)
 
 HEIGHT=50
 WIDTH=50
@@ -140,33 +120,20 @@ def tableau():
      perso()
      root.after(100, tableau)
 	
-for event in tk.EventType.get():
 
-     if event.type == KeyboardInterrupt:
-
-       if event.key === <Up>:
-           x perso += 1
-       if event.key === <Down>:
-           x perso -= 1
-       if event.key === <Left>:
-           y perso -= 1
-       if event.key === <Right>:
-           y perso += 1
 
 
 root= tk.Tk()
 root.title('Terrain de jeu')
 canvas= tk.Canvas(root, height=HEIGHT*cote, width=WIDTH*cote, bg='white')
 canvas.grid(row = 0, column = 0, columnspan=2, padx=3, pady=3)
-for i in range(50):
-            for j in range(50):
-                  tk.Canvas(root, height = HEIGHT, width = WIDTH, highlightbackground = 'black').grid(row = i, column = j)
-states = generateur_case(p, n)
-coul_quad()
+
 quad()
 tableau()
-canvas.bind("KP_UP", perso)
-canvas.bind("KP_Down", perso)
-canvas.bind("KP_Left", perso)
-canvas.bind("KP_Right", perso)
+
+
+###canvas.bind("KP_UP", perso)
+###canvas.bind("KP_Down", perso)
+###canvas.bind("KP_Left", perso)
+###canvas.bind("KP_Right", perso)
 root.mainloop()
