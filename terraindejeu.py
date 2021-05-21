@@ -63,7 +63,6 @@ def dessiner():
 def case_eau(a,b):
     """ Compte les cases d'eau """
     cpt= 0
-    
     if etat[(a-1)%WIDTH][(b+1)%HEIGHT] == 1:
        cpt += 1
     if etat[a][(b+1)%HEIGHT] == 1:
