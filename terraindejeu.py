@@ -6,7 +6,7 @@
 #Fouad Abdoullah
 #Sihem MADMAR
 
-
+#Import des librairies#
 import tkinter as tk
 import random 
 
@@ -30,6 +30,7 @@ etat = [[terre for row in range(HEIGHT)] for col in range(WIDTH)]
 # Mémorise le nouvel état des cellules#
 temp = [[terre for row in range(HEIGHT)] for col in range(WIDTH)]
 
+
 # Fonctions du programme #
 
 def dessiner():
@@ -41,6 +42,7 @@ def dessiner():
             else:
                 coul = "green"
             canvas.itemconfig(cell[x][y], fill=coul)
+
 
 def quad():
     """ Quadrille le terrain et place des cellules de terre en fonction de p"""
@@ -80,7 +82,7 @@ def nb_voisin(a,b):
     else:
         couleur = etat[(a+1)%WIDTH][(b-1)%HEIGHT]
     return couleur
-    
+
 
 def nouvel_etat():
     """Dessine le nouvel etat des cellules en fonction des voisins"""
@@ -101,7 +103,7 @@ def nouvel_etat():
         else:
             coul = "blue"
         canvas.itemconfig(cell[x][y], fill=coul)
-
+    
 
 def coord_to_lg(x, y):
     """Fonction qui retourne la colonne et la ligne du quadrillage
@@ -122,13 +124,13 @@ def perso(event):
         canvas.delete(etat[i][j])
         etat[i][j] = -1
 
-        
+
 def tableau():
     """ Retourne du prochain tableau """
     nouvel_etat()
     root.after(100, tableau)
-      
-                
+    
+                     
 # Programme principal #
 root= tk.Tk()
 root.title('Terrain de jeu')
@@ -139,8 +141,7 @@ canvas.grid(row = 0, column = 0, columnspan=2, padx=3, pady=3)
 quad()
 tableau()
 
-
- # Liaison des evènenements #
+# Liaison des evènenements #
 canvas.bind("<Button-1>", perso)
 #canvas.bind("<Alt-Up>", perso)
 #canvas.bind("<Alt-Down>", perso)
@@ -149,3 +150,4 @@ canvas.bind("<Button-1>", perso)
 
 # Lancement de la boucle principal #
 root.mainloop() 
+
