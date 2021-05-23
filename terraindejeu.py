@@ -9,18 +9,23 @@
 #Import des librairies#
 import tkinter as tk
 import random 
+import copy
 
-###Constantes###
-HEIGHT=int(input("Entrer un nombre"))
-WIDTH=int(input("Entrer un nombre"))
-T= int(input("Entrer un nombre"))
-p= 0.5
-cote= 10
-couleur=["green","blue"]
-eau= 1
-terre= 0
-nb_terre= HEIGHT*WIDTH
-nb_eau= 0
+#Constantes#
+HEIGHT = int(input("Entrer un nombre"))
+WIDTH = int(input("Entrer un nombre"))
+T = int(input("Entrer un nombre"))
+p = 0.5
+cote = 10
+couleur =["green","blue"]
+eau = 1
+terre = 0
+nb_terre = HEIGHT*WIDTH
+nb_eau = 0
+
+#Variables globales#
+grille = None
+cpt = 0
 
 # Matrices #
 #Mémorise les cellules#
@@ -63,7 +68,7 @@ def quad():
 
 
 def nb_voisin(a,b):
-    """Compte les cases voisisnes"""
+    """Compte les cases voisines"""
     voisin = random.randrange(8)
     if voisin==1:
         couleur = etat[(a-1)%WIDTH][(b+1)%HEIGHT]
@@ -130,6 +135,32 @@ def tableau():
     nouvel_etat()
     root.after(100, tableau)
     
+def lectureFichierSauvegarde():
+	"""Sauvegarde le tableau dans le fichier sauvegarde.txt"""
+	fichier = open("sauvegarde.txt", "w")
+	for y in range(HEIGHT):
+		for x in range(WIDTH):
+			fichier.write(str(grille[x][y]) + "\n")
+	fichier.close()
+    
+def recharger():
+	""" Fonction qui recharge le fichier sauvegarde.txt et qui renvoie le tableau"""
+	fichier = open("sauvegarde.txt","r")
+	for line in fichier:
+		x, y = cpt% WIDTH, cpt // WIDTH
+		if grille[x][y] != -1:
+			canvas.delete(grille[x][y])
+		n = int(line)
+		if n == -1:
+			grille[x][y] = -1
+		else:
+			i, j = x * cote, j * cote
+			carre = canvas.create_rectangle(i, j, i + cote, j + cote, fill= "black")
+			tableau[x][y] = carre
+		cpt += 1
+	fichier.close() 
+    
+    
                      
 # Programme principal #
 root= tk.Tk()
@@ -140,6 +171,14 @@ canvas.grid(row = 0, column = 0, columnspan=2, padx=3, pady=3)
 # Appel des fonctions #
 quad()
 tableau()
+
+#Création des widgets#
+btn_lectureFichierSauvegarde = tk.Button(root, text="sauvegarder", command=lectureFichierSauvegarde)
+btn_recharger = tk.Button(root, text="recharger", command=recharger)
+
+#Emplacement des widgets#
+btn_lectureFichierSauvegarde.grid(column=0, row=4)
+btn_recharger.grid(column = 1, row= 4)
 
 # Liaison des evènenements #
 canvas.bind("<Button-1>", perso)
