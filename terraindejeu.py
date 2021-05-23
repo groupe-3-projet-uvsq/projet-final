@@ -17,6 +17,8 @@ WIDTH = int(input("Entrer un nombre"))
 T = int(input("Entrer un nombre"))
 p = 0.5
 cote = 10
+nb_col = WIDTH // cote
+nb_line = HEIGHT // cote
 couleur =["green","blue"]
 eau = 1
 terre = 0
@@ -138,25 +140,26 @@ def tableau():
 def lectureFichierSauvegarde():
 	"""Sauvegarde le tableau dans le fichier sauvegarde.txt"""
 	fichier = open("sauvegarde.txt", "w")
-	for y in range(HEIGHT):
-		for x in range(WIDTH):
-			fichier.write(str(grille[x][y]) + "\n")
+	for j in range(HEIGHT):
+		for i in range(WIDTH):
+			fichier.write(str(temp[i][j]) + "\n")
 	fichier.close()
     
 def recharger():
 	""" Fonction qui recharge le fichier sauvegarde.txt et qui renvoie le tableau"""
 	fichier = open("sauvegarde.txt","r")
-	for line in fichier:
-		x, y = cpt% WIDTH, cpt // WIDTH
-		if grille[x][y] != -1:
-			canvas.delete(grille[x][y])
-		n = int(line)
+	cpt = 0
+	for ligne in fichier:
+		i, j = cpt% nb_col, cpt // nb_col
+		if temp[i][j] != -1:
+			canvas.delete(temp[i][j])
+		n = int(ligne)
 		if n == -1:
-			grille[x][y] = -1
+			temp[i][j] = -1
 		else:
-			i, j = x * cote, j * cote
-			carre = canvas.create_rectangle(i, j, i + cote, j + cote, fill= "black")
-			tableau[x][y] = carre
+			x, y = i * cote, j * cote
+			carre = canvas.create_rectangle(x, y, x + cote, y + cote, fill= couleur[etat[x][y]], outline="grey")
+			temp[i][j] = carre
 		cpt += 1
 	fichier.close() 
     
