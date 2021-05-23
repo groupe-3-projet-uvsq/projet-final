@@ -26,7 +26,6 @@ nb_terre = HEIGHT*WIDTH
 nb_eau = 0
 
 #Variables globales#
-grille = None
 cpt = 0
 
 # Matrices #
@@ -145,8 +144,8 @@ def lectureFichierSauvegarde():
 			fichier.write(str(temp[i][j]) + "\n")
 	fichier.close()
     
-def recharger():
-	""" Fonction qui recharge le fichier sauvegarde.txt et qui renvoie le tableau"""
+"""def recharger():
+	"" Fonction qui recharge le fichier sauvegarde.txt et qui renvoie le tableau""
 	fichier = open("sauvegarde.txt","r")
 	cpt = 0
 	for ligne in fichier:
@@ -161,7 +160,7 @@ def recharger():
 			carre = canvas.create_rectangle(x, y, x + cote, y + cote, fill= couleur[etat[x][y]], outline="grey")
 			temp[i][j] = carre
 		cpt += 1
-	fichier.close() 
+	fichier.close()""" 
     
     
                      
@@ -177,11 +176,11 @@ tableau()
 
 #Création des widgets#
 btn_lectureFichierSauvegarde = tk.Button(root, text="sauvegarder", command=lectureFichierSauvegarde)
-btn_recharger = tk.Button(root, text="recharger", command=recharger)
+"""btn_recharger = tk.Button(root, text="recharger", command=recharger)"""
 
 #Emplacement des widgets#
 btn_lectureFichierSauvegarde.grid(column=0, row=4)
-btn_recharger.grid(column = 1, row= 4)
+"""btn_recharger.grid(column = 1, row= 4)"""
 
 # Liaison des evènenements #
 canvas.bind("<Button-1>", perso)
