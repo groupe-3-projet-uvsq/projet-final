@@ -146,7 +146,7 @@ def lectureFichierSauvegarde():
     
     ###def recharger():
 	 ## Fonction qui recharge le fichier sauvegarde.txt et qui renvoie le tableau##
-	fichier = open("sauvegarde.txt","r")
+	#fichier = open("sauvegarde.txt","r")
 	cpt = 0
 	for ligne in fichier:
 		i, j = cpt% nb_col, cpt // nb_col
@@ -160,7 +160,7 @@ def lectureFichierSauvegarde():
 			carre = canvas.create_rectangle(x, y, x + cote, y + cote, fill= couleur[etat[x][y]], outline="grey")
 			temp[i][j] = carre
 		cpt += 1
-	fichier.close()###
+	fichier.close()#
     
     
                      
