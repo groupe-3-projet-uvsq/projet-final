@@ -40,7 +40,7 @@ temp = [[terre for row in range(HEIGHT)] for col in range(WIDTH)]
 # Fonctions du programme #
 
 def dessiner():
-    """ Dessine les cellules """
+    #Dessine les cellules#
     for y in range(HEIGHT):
         for x in range(WIDTH):
             if etat[x][y]==1:
@@ -51,7 +51,7 @@ def dessiner():
 
 
 def quad():
-    """ Quadrille le terrain et place des cellules de terre en fonction de p"""
+        #Quadrille le terrain et place des cellules de terre en fonction de p#
     # placer au hasard environ 50% de cellules de terre###
     for i in range(HEIGHT):
         for j in range(WIDTH):
@@ -69,7 +69,7 @@ def quad():
 
 
 def nb_voisin(a,b):
-    """Compte les cases voisines"""
+       #Compte les cases voisines#
     voisin = random.randrange(8)
     if voisin==1:
         couleur = etat[(a-1)%WIDTH][(b+1)%HEIGHT]
@@ -91,7 +91,7 @@ def nb_voisin(a,b):
 
 
 def nouvel_etat():
-    """Dessine le nouvel etat des cellules en fonction des voisins"""
+       #Dessine le nouvel etat des cellules en fonction des voisins#
     global nb_terre, nb_eau
     x = random.randrange(HEIGHT)
     y = random.randrange(WIDTH)
@@ -112,13 +112,13 @@ def nouvel_etat():
     
 
 def coord_to_lg(x, y):
-    """Fonction qui retourne la colonne et la ligne du quadrillage
-    à partir des coordonnées x et y"""
+       #Fonction qui retourne la colonne et la ligne du quadrillage
+    à partir des coordonnées x et y#
     return x // cote, y // cote
 
 
 def perso(event):
-    """Place le personnage"""
+       #Place le personnage#
     i, j = coord_to_lg(event.x, event.y)
     if etat[i][j] == -1:
         x, y = i * cote, j * cote
@@ -132,20 +132,20 @@ def perso(event):
 
 
 def tableau():
-    """ Retourne du prochain tableau """
+       #Retourne du prochain tableau#
     nouvel_etat()
     root.after(100, tableau)
     
 def lectureFichierSauvegarde():
-	"""Sauvegarde le tableau dans le fichier sauvegarde.txt"""
+	   #Sauvegarde le tableau dans le fichier sauvegarde.txt#
 	fichier = open("sauvegarde.txt", "w")
 	for j in range(HEIGHT):
 		for i in range(WIDTH):
 			fichier.write(str(temp[i][j]) + "\n")
 	fichier.close()
     
-"""def recharger():
-	"" Fonction qui recharge le fichier sauvegarde.txt et qui renvoie le tableau""
+    #def recharger():
+	 ## Fonction qui recharge le fichier sauvegarde.txt et qui renvoie le tableau##
 	fichier = open("sauvegarde.txt","r")
 	cpt = 0
 	for ligne in fichier:
@@ -160,7 +160,7 @@ def lectureFichierSauvegarde():
 			carre = canvas.create_rectangle(x, y, x + cote, y + cote, fill= couleur[etat[x][y]], outline="grey")
 			temp[i][j] = carre
 		cpt += 1
-	fichier.close()""" 
+	fichier.close()#
     
     
                      
@@ -176,11 +176,11 @@ tableau()
 
 #Création des widgets#
 btn_lectureFichierSauvegarde = tk.Button(root, text="sauvegarder", command=lectureFichierSauvegarde)
-"""btn_recharger = tk.Button(root, text="recharger", command=recharger)"""
+#btn_recharger = tk.Button(root, text="recharger", command=recharger)#
 
 #Emplacement des widgets#
 btn_lectureFichierSauvegarde.grid(column=0, row=4)
-"""btn_recharger.grid(column = 1, row= 4)"""
+#btn_recharger.grid(column = 1, row= 4)#
 
 # Liaison des evènenements #
 canvas.bind("<Button-1>", perso)
