@@ -144,23 +144,23 @@ def lectureFichierSauvegarde():
 			fichier.write(str(temp[i][j]) + "\n")
 	fichier.close()
     
-    ###def recharger():
-	 ## Fonction qui recharge le fichier sauvegarde.txt et qui renvoie le tableau##
+#def recharger():
+	 #Fonction qui recharge le fichier sauvegarde.txt et qui renvoie le tableau##
 	#fichier = open("sauvegarde.txt","r")
-	cpt = 0
-	for ligne in fichier:
-		i, j = cpt% nb_col, cpt // nb_col
-		if temp[i][j] != -1:
-			canvas.delete(temp[i][j])
-		n = int(ligne)
-		if n == -1:
-			temp[i][j] = -1
-		else:
-			x, y = i * cote, j * cote
-			carre = canvas.create_rectangle(x, y, x + cote, y + cote, fill= couleur[etat[x][y]], outline="grey")
-			temp[i][j] = carre
-		cpt += 1
-	fichier.close()#
+	#cpt = 0
+	#for ligne in fichier:
+		#i, j = cpt% nb_col, cpt // nb_col
+		#if temp[i][j] != -1:
+			#canvas.delete(temp[i][j])
+		#n = int(ligne)
+		#if n == -1:
+			#temp[i][j] = -1
+		#else:
+			#x, y = i * cote, j * cote
+			#carre = canvas.create_rectangle(x, y, x + cote, y + cote, fill= couleur[etat[x][y]], outline="grey")
+			#temp[i][j] = carre
+		#cpt += 1
+	#fichier.close()#
     
     
                      
