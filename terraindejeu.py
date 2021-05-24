@@ -113,7 +113,7 @@ def nouvel_etat():
 
 def coord_to_lg(x, y):
        #Fonction qui retourne la colonne et la ligne du quadrillage
-    à partir des coordonnées x et y#
+   # à partir des coordonnées x et y###
     return x // cote, y // cote
 
 
@@ -144,7 +144,7 @@ def lectureFichierSauvegarde():
 			fichier.write(str(temp[i][j]) + "\n")
 	fichier.close()
     
-    #def recharger():
+    ###def recharger():
 	 ## Fonction qui recharge le fichier sauvegarde.txt et qui renvoie le tableau##
 	fichier = open("sauvegarde.txt","r")
 	cpt = 0
@@ -160,7 +160,7 @@ def lectureFichierSauvegarde():
 			carre = canvas.create_rectangle(x, y, x + cote, y + cote, fill= couleur[etat[x][y]], outline="grey")
 			temp[i][j] = carre
 		cpt += 1
-	fichier.close()#
+	fichier.close()###
     
     
                      
