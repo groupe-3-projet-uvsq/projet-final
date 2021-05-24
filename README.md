@@ -13,3 +13,8 @@ Les deux premières valeurs doivent être positives et inférieures à 200
 La dernière valeur doit être positive et inférieure à 10
 Pour placer son personnage, l'utilisateur doit faire un double-clic droit 
 Pour retirer son personnage, l'utilisateur doit faire un clic droit sur la cellule sur laquelle il a cliqué.
+
+Explication sur certaines fonctions que nous n'avons pas réussie a faire fonctionner:
+
+La fonction perso(event) peut normalement permettre à l'utilisateur de déplacer son personnage en maintenant la touche Alt+ l'une des flèches du clavier, mais cette fonction est laissé en commentaire.
+La fonction recharger() ne fonctionne pas celle-ci permet de recharger le fichier sauvegarde.txt et renvoie le tableau.
